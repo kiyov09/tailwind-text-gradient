@@ -1,86 +1,117 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { useEffect, useRef, useState } from 'react';
+
+import Listbox from '../components/generics/Listbox';
+import type { Option, ListboxOptions } from '../components/generics/Listbox';
+
+import ColorPicker from '../components/generics/ColorPicker';
+import { SwitchHorizontalIcon } from '@heroicons/react/outline';
+
+const options: ListboxOptions = [
+  {
+    id: 1,
+    label: 'To right',
+    value: 'bg-gradient-to-r',
+  },
+  {
+    id: 2,
+    label: 'To top',
+    value: 'bg-gradient-to-t',
+  },
+  {
+    id: 3,
+    label: 'To bottom',
+    value: 'bg-gradient-to-b',
+  },
+  {
+    id: 4,
+    label: 'To left',
+    value: 'bg-gradient-to-l',
+  },
+  {
+    id: 5,
+    label: 'To top right',
+    value: 'bg-gradient-to-tr',
+  },
+  {
+    id: 6,
+    label: 'To top left',
+    value: 'bg-gradient-to-tl',
+  },
+  {
+    id: 7,
+    label: 'To bottom right',
+    value: 'bg-gradient-to-br',
+  },
+  {
+    id: 8,
+    label: 'To bottom left',
+    value: 'bg-gradient-to-bl',
+  },
+];
 
 const Home: NextPage = () => {
+  const [direction, setDirection] = useState('bg-gradient-to-r');
+
+  const [initialColor, setInitialColor] = useState('#ef4444ff');
+  const [toColor, setToColor] = useState('#3b82f6ff');
+
+  const textRef = useRef<HTMLHeadingElement>(null);
+
+  const onNewDirection = (option: Option) => {
+    console.log(option);
+    setDirection(option.value);
+  };
+
+  const switchColors = () => {
+    const temp = initialColor;
+    setInitialColor(toColor);
+    setToColor(temp);
+  };
+
+  useEffect(() => {
+    if (textRef.current) {
+      textRef.current.style.setProperty('--tw-gradient-from', initialColor);
+    }
+  }, [initialColor]);
+
+  useEffect(() => {
+    if (textRef.current) {
+      textRef.current.style.setProperty('--tw-gradient-to', toColor);
+    }
+  }, [toColor]);
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="">
       <Head>
-        <title>Create Next App</title>
+        <title>Tailwindcss Text Gradient Generator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
+      <main className="grid h-screen w-screen place-items-center overflow-hidden bg-neutral-900 p-8 md:p-12 lg:px-32">
+        <h1
+          ref={textRef}
+          className={`w-full ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-[6rem] font-extrabold leading-none text-transparent md:text-[8rem] lg:text-[10rem]`}
+        >
+          Lorem ipsum dolor.
         </h1>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className="fixed bottom-4 left-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-10 md:bottom-auto md:left-auto md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
+          <Listbox options={options} onSelect={onNewDirection} />
+          <ColorPicker onChange={setInitialColor} color={initialColor}>
+            From
+          </ColorPicker>
+          <button onClick={switchColors}>
+            <SwitchHorizontalIcon className="h-6 w-6 text-neutral-50 transition-transform duration-300 active:rotate-180" />
+          </button>
+          <ColorPicker onChange={setToColor} color={toColor}>
+            To
+          </ColorPicker>
         </div>
       </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
