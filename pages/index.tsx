@@ -97,15 +97,21 @@ const Home: NextPage = () => {
           Lorem ipsum dolor.
         </h1>
 
-        <div className="fixed bottom-4 left-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-10 md:bottom-auto md:left-auto md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
+        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-10 md:bottom-auto md:left-auto md:right-auto md:flex-nowrap md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
           <Listbox options={options} onSelect={onNewDirection} />
-          <ColorPicker onChange={setInitialColor} color={initialColor}>
+          <ColorPicker
+            onChange={(color) => setInitialColor(color as string)}
+            color={initialColor}
+          >
             From
           </ColorPicker>
           <button onClick={switchColors}>
             <SwitchHorizontalIcon className="h-6 w-6 text-neutral-50 transition-transform duration-300 active:rotate-180" />
           </button>
-          <ColorPicker onChange={setToColor} color={toColor}>
+          <ColorPicker
+            onChange={(color) => setToColor(color as string)}
+            color={toColor}
+          >
             To
           </ColorPicker>
         </div>

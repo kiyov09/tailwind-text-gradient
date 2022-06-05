@@ -1,5 +1,5 @@
-import { ChromePicker, Color } from 'react-color';
-import type { ColorChangeHandler } from 'react-color';
+import { ChromePicker } from 'react-color';
+import type { ColorResult, Color } from 'react-color';
 
 import { Popover } from '@headlessui/react';
 import { useEffect, useState } from 'react';
@@ -17,7 +17,7 @@ export default function ColorPicker({
 }: ColorPickerProps) {
   const [color, setColor] = useState(colorProp);
 
-  const onColorChange: ColorChangeHandler = (newColor) => {
+  const onColorChange = (newColor: ColorResult) => {
     console.log('newColor', newColor);
     setColor(newColor.hex);
     onChange(newColor.hex);
