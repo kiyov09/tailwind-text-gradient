@@ -36,7 +36,7 @@ export default function ColorPicker({
           style={{ backgroundColor: `${rgbaToCSS(color)}` }}
         ></div>
       </Popover.Button>
-      <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-72 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-0 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/3">
+      <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-60 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-0 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/3">
         <RgbaColorPicker
           color={color}
           onChange={onColorChange}
