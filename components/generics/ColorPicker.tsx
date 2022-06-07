@@ -4,6 +4,7 @@ import type { RgbaColor } from 'react-colorful';
 import { Popover } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import { rgbaToCSS } from '../../utils/colors';
+import { ArrowUpIcon } from '@heroicons/react/outline';
 
 export type ColorPickerProps = {
   color: RgbaColor;
@@ -36,7 +37,7 @@ export default function ColorPicker({
           style={{ backgroundColor: `${rgbaToCSS(color)}` }}
         ></div>
       </Popover.Button>
-      <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-60 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-0 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/3">
+      <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-60 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-1/2 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/2 md:shadow-sm md:shadow-neutral-700">
         <RgbaColorPicker
           color={color}
           onChange={onColorChange}
