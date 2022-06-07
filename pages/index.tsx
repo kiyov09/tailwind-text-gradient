@@ -7,6 +7,9 @@ import type { Option, ListboxOptions } from '../components/generics/Listbox';
 
 import ColorPicker from '../components/generics/ColorPicker';
 import { SwitchHorizontalIcon } from '@heroicons/react/outline';
+import { RgbaColor } from 'react-colorful';
+
+import { rgbaToCSS } from '../utils/colors';
 
 const options: ListboxOptions = [
   {
@@ -54,8 +57,18 @@ const options: ListboxOptions = [
 const Home: NextPage = () => {
   const [direction, setDirection] = useState('bg-gradient-to-r');
 
-  const [initialColor, setInitialColor] = useState('#ef4444ff');
-  const [toColor, setToColor] = useState('#3b82f6ff');
+  const [initialColor, setInitialColor] = useState<RgbaColor>({
+    r: 239,
+    g: 68,
+    b: 68,
+    a: 1,
+  });
+  const [toColor, setToColor] = useState<RgbaColor>({
+    r: 59,
+    g: 130,
+    b: 246,
+    a: 1,
+  });
 
   const textRef = useRef<HTMLHeadingElement>(null);
 
@@ -72,13 +85,16 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (textRef.current) {
-      textRef.current.style.setProperty('--tw-gradient-from', initialColor);
+      textRef.current.style.setProperty(
+        '--tw-gradient-from',
+        rgbaToCSS(initialColor)
+      );
     }
   }, [initialColor]);
 
   useEffect(() => {
     if (textRef.current) {
-      textRef.current.style.setProperty('--tw-gradient-to', toColor);
+      textRef.current.style.setProperty('--tw-gradient-to', rgbaToCSS(toColor));
     }
   }, [toColor]);
 
@@ -100,7 +116,7 @@ const Home: NextPage = () => {
         <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-10 md:bottom-auto md:left-auto md:right-auto md:flex-nowrap md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
           <Listbox options={options} onSelect={onNewDirection} />
           <ColorPicker
-            onChange={(color) => setInitialColor(color as string)}
+            onChange={(color) => setInitialColor(color)}
             color={initialColor}
           >
             From
@@ -108,10 +124,7 @@ const Home: NextPage = () => {
           <button onClick={switchColors}>
             <SwitchHorizontalIcon className="h-6 w-6 text-neutral-50 transition-transform duration-300 active:rotate-180" />
           </button>
-          <ColorPicker
-            onChange={(color) => setToColor(color as string)}
-            color={toColor}
-          >
+          <ColorPicker onChange={(color) => setToColor(color)} color={toColor}>
             To
           </ColorPicker>
         </div>

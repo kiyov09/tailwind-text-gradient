@@ -1,13 +1,13 @@
-import { RgbaStringColorPicker } from 'react-colorful';
-import type { RgabColor } from 'react-colorful';
+import { RgbaColorPicker, RgbaStringColorPicker } from 'react-colorful';
+import type { RgbaColor } from 'react-colorful';
 
 import { Popover } from '@headlessui/react';
 import { useEffect, useState } from 'react';
-import { usePopper } from 'react-popper';
+import { rgbaToCSS } from '../../utils/colors';
 
 export type ColorPickerProps = {
-  color: RgabColor;
-  onChange: (color: RgabColor) => void;
+  color: RgbaColor;
+  onChange: (color: RgbaColor) => void;
   children?: string;
 };
 
@@ -18,7 +18,7 @@ export default function ColorPicker({
 }: ColorPickerProps) {
   const [color, setColor] = useState(colorProp);
 
-  const onColorChange = (newColor: RgabColor) => {
+  const onColorChange = (newColor: RgbaColor) => {
     setColor(newColor);
     onChange(newColor);
   };
@@ -33,11 +33,11 @@ export default function ColorPicker({
         <span className="flex-1 text-left">{children}</span>
         <div
           className="h-full w-10 rounded-md"
-          style={{ backgroundColor: `${color}` }}
+          style={{ backgroundColor: `${rgbaToCSS(color)}` }}
         ></div>
       </Popover.Button>
       <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-72 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-0 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/3">
-        <RgbaStringColorPicker
+        <RgbaColorPicker
           color={color}
           onChange={onColorChange}
           style={{ width: '100%', height: '100%' }}
