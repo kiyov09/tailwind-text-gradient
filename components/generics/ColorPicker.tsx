@@ -1,12 +1,13 @@
-import { ChromePicker } from 'react-color';
-import type { ColorResult, Color } from 'react-color';
+import { RgbaStringColorPicker } from 'react-colorful';
+import type { RgabColor } from 'react-colorful';
 
 import { Popover } from '@headlessui/react';
 import { useEffect, useState } from 'react';
+import { usePopper } from 'react-popper';
 
 export type ColorPickerProps = {
-  color: Color;
-  onChange: (color: Color) => void;
+  color: RgabColor;
+  onChange: (color: RgabColor) => void;
   children?: string;
 };
 
@@ -17,10 +18,9 @@ export default function ColorPicker({
 }: ColorPickerProps) {
   const [color, setColor] = useState(colorProp);
 
-  const onColorChange = (newColor: ColorResult) => {
-    console.log('newColor', newColor);
-    setColor(newColor.hex);
-    onChange(newColor.hex);
+  const onColorChange = (newColor: RgabColor) => {
+    setColor(newColor);
+    onChange(newColor);
   };
 
   useEffect(() => {
@@ -36,13 +36,11 @@ export default function ColorPicker({
           style={{ backgroundColor: `${color}` }}
         ></div>
       </Popover.Button>
-      <Popover.Panel className="absolute left-3/4 bottom-14 w-auto -translate-x-1/2 rounded-md bg-neutral-800 p-1 md:left-1/2 md:top-14">
-        <ChromePicker
-          className="bg-neutral-800"
+      <Popover.Panel className="fixed bottom-16 left-5 mb-4 h-72 w-[calc(100vw-2.5rem)] rounded-md bg-neutral-800 p-1 md:absolute md:left-0 md:top-full md:mt-4 md:h-60 md:w-72 md:-translate-x-1/3">
+        <RgbaStringColorPicker
           color={color}
           onChange={onColorChange}
-          onChangeComplete={console.log}
-          disableAlpha={false}
+          style={{ width: '100%', height: '100%' }}
         />
       </Popover.Panel>
     </Popover>
