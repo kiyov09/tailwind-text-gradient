@@ -99,21 +99,21 @@ const Home: NextPage = () => {
   }, [toColor]);
 
   return (
-    <div className="">
+    <div className="min-w-screen min-h-screen">
       <Head>
         <title>Tailwindcss Text Gradient Generator</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="grid h-screen w-screen place-items-center overflow-hidden bg-neutral-900 p-8 md:p-12 lg:px-32">
+      <main className="h-screen w-screen bg-neutral-900 p-6 md:p-12 lg:px-24">
         <h1
           ref={textRef}
-          className={`w-full ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-[6rem] font-extrabold leading-none text-transparent md:text-[8rem] lg:text-[10rem]`}
+          className={`mx-auto max-w-7xl pb-6 ${direction} mt-[15vh] from-red-500 to-blue-500 bg-clip-text text-center text-6xl font-extrabold leading-none text-transparent md:mt-[25vh] md:text-[7rem] lg:text-[8rem]`}
         >
-          Lorem ipsum dolor.
+          TailwindCSS text gradient generator
         </h1>
 
-        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-10 md:bottom-auto md:left-auto md:right-auto md:flex-nowrap md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
+        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
           <Listbox options={options} onSelect={onNewDirection} />
           <ColorPicker
             onChange={(color) => setInitialColor(color)}
