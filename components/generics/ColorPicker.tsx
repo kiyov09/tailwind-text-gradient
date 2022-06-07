@@ -28,8 +28,8 @@ export default function ColorPicker({
   }, [colorProp]);
 
   return (
-    <Popover className="relative">
-      <Popover.Button className="flex h-10 w-auto items-center justify-between gap-8 rounded-xl bg-neutral-800 px-4 py-2 text-base tracking-wider text-white ring-1 ring-neutral-700">
+    <Popover className="relative flex-1">
+      <Popover.Button className="flex h-10 w-full items-center justify-between gap-8 rounded-xl bg-neutral-800 px-4 py-2 text-base tracking-wider text-white ring-1 ring-neutral-700 md:w-auto">
         <span className="flex-1 text-left">{children}</span>
         <div
           className="h-full w-10 rounded-md"
