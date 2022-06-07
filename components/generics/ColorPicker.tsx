@@ -1,4 +1,4 @@
-import { RgbaColorPicker, RgbaStringColorPicker } from 'react-colorful';
+import { RgbaColorPicker } from 'react-colorful';
 import type { RgbaColor } from 'react-colorful';
 
 import { Popover } from '@headlessui/react';
