@@ -10,7 +10,6 @@ import { SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { RgbaColor } from 'react-colorful';
 
 import { rgbaToCSS } from '../utils/colors';
-import GeneratedCode from '../components/GeneratedCode';
 import { CopyBlock, dracula } from 'react-code-blocks';
 
 const options: ListboxOptions = [
