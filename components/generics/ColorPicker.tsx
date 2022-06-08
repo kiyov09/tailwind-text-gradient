@@ -4,7 +4,6 @@ import type { RgbaColor } from 'react-colorful';
 import { Popover } from '@headlessui/react';
 import { useEffect, useState } from 'react';
 import { rgbaToCSS } from '../../utils/colors';
-import { ArrowUpIcon } from '@heroicons/react/outline';
 
 export type ColorPickerProps = {
   color: RgbaColor;
