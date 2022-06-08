@@ -13,6 +13,7 @@
     "@types/react-color": "^3.0.6",
     "next": "latest",
     "react": "18.1.0",
+    "react-code-blocks": "^0.0.9-0",
     "react-color": "^2.19.3",
     "react-colorful": "^5.5.1",
     "react-dom": "18.1.0",

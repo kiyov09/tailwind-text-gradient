@@ -10,6 +10,8 @@ import { SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { RgbaColor } from 'react-colorful';
 
 import { rgbaToCSS } from '../utils/colors';
+import GeneratedCode from '../components/GeneratedCode';
+import { CopyBlock, dracula } from 'react-code-blocks';
 
 const options: ListboxOptions = [
   {
@@ -70,6 +72,10 @@ const Home: NextPage = () => {
     a: 1,
   });
 
+  const code = `text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
+    initialColor
+  )}] to-[${rgbaToCSS(toColor)}]`;
+
   const textRef = useRef<HTMLHeadingElement>(null);
 
   const onNewDirection = (option: Option) => {
@@ -105,15 +111,31 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen w-screen bg-neutral-900 p-6 md:p-12 lg:px-24">
+      <main className="grid h-screen w-screen place-items-center bg-neutral-900 p-6 md:p-10 lg:px-24">
         <h1
           ref={textRef}
-          className={`mx-auto max-w-7xl pb-6 ${direction} mt-[15vh] from-red-500 to-blue-500 bg-clip-text text-center text-6xl font-extrabold leading-none text-transparent md:mt-[25vh] md:text-[7rem] lg:text-[8rem]`}
+          className={`mx-auto max-w-7xl pb-6 ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-6xl font-extrabold leading-none text-transparent md:mb-20 md:place-self-end md:text-[7rem] lg:text-[8rem]`}
         >
           TailwindCSS text gradient generator
         </h1>
 
-        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-8 md:rounded-2xl md:border md:border-neutral-700 md:after:rounded-2xl md:after:bg-neutral-800 md:after:blur-sm">
+        {/*<GeneratedCode code={code} />*/}
+        <div className="place-self-start md:place-self-auto">
+          <CopyBlock
+            text={code}
+            language="html"
+            theme={dracula}
+            customStyle={{
+              padding: '1.5rem',
+              paddingRight: '3.5rem',
+              overflow: 'auto',
+              textAlign: 'center',
+              marginBottom: '2rem',
+            }}
+          />
+        </div>
+
+        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl md:after:rounded-2xl">
           <Listbox options={options} onSelect={onNewDirection} />
           <ColorPicker
             onChange={(color) => setInitialColor(color)}
