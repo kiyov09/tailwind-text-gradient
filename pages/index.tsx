@@ -118,7 +118,6 @@ const Home: NextPage = () => {
           TailwindCSS text gradient generator
         </h1>
 
-        {/*<GeneratedCode code={code} />*/}
         <div className="place-self-start md:place-self-auto">
           <CopyBlock
             text={code}
