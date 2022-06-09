@@ -104,7 +104,7 @@ const Home: NextPage = () => {
   }, [toColor]);
 
   return (
-    <div className="min-w-screen min-h-screen">
+    <div className="h-screen w-screen">
       <Head>
         <title>Tailwindcss Text Gradient Generator</title>
         <link rel="icon" href="/favicon.ico" />

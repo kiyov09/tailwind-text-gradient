@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body,
+#__next {
+  height: 100vh;
+  min-height: 100vh;
+  /* mobile viewport bug fix */
+  height: -webkit-fill-available;
+  min-height: -webkit-fill-available;
+
+  overflow-y: hidden;
+}
+
+html {
+  height: -webkit-fill-available;
+}
