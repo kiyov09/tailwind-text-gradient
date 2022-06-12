@@ -2,6 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 
+import { rgbaToCSS } from '../utils/colors';
+import { CopyBlock, dracula } from 'react-code-blocks';
+
 import Listbox from '../components/generics/Listbox';
 import type { Option, ListboxOptions } from '../components/generics/Listbox';
 
@@ -9,8 +12,7 @@ import ColorPicker from '../components/generics/ColorPicker';
 import { SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { RgbaColor } from 'react-colorful';
 
-import { rgbaToCSS } from '../utils/colors';
-import { CopyBlock, dracula } from 'react-code-blocks';
+import GithubLink from '../components/GithubLink';
 
 const options: ListboxOptions = [
   {
@@ -148,6 +150,8 @@ const Home: NextPage = () => {
             To
           </ColorPicker>
         </div>
+
+        <GithubLink />
       </main>
     </div>
   );
