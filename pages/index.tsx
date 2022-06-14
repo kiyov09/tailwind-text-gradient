@@ -112,7 +112,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen w-screen bg-neutral-900 p-6 pt-28 md:p-10 md:pt-44 lg:px-24 lg:pt-52">
+      <main className="h-screen w-screen bg-neutral-900 p-6 pt-28 md:p-10 md:pt-60 lg:px-24">
         <h1
           ref={textRef}
           className={`mx-auto w-auto max-w-7xl pb-2 ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-5xl font-extrabold leading-none text-transparent sm:text-6xl md:place-self-center md:text-8xl lg:text-[8rem]`}
@@ -120,7 +120,7 @@ const Home: NextPage = () => {
           TailwindCSS text gradient generator
         </h1>
 
-        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 md:w-3/4 md:max-w-6xl xxs:bottom-[150px]">
+        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 md:mt-44 md:w-3/4 md:max-w-6xl xxs:bottom-[150px]">
           <CopyBlock
             text={code}
             language="html"
