@@ -120,7 +120,7 @@ const Home: NextPage = () => {
           TailwindCSS text gradient generator
         </h1>
 
-        <div className="fixed bottom-[150px] right-0 left-0 mx-auto w-auto max-w-6xl px-6">
+        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 md:w-3/4 md:max-w-6xl xxs:bottom-[150px]">
           <CopyBlock
             text={code}
             language="html"
@@ -135,17 +135,20 @@ const Home: NextPage = () => {
           />
         </div>
 
-        <div className="fixed bottom-4 left-0 right-0 flex w-auto flex-wrap items-center justify-between gap-5 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl md:after:rounded-2xl">
+        <div className="fixed bottom-4 left-0 right-0 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 after:absolute after:inset-0 after:-z-10 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl md:after:rounded-2xl xxs:gap-5">
           <Listbox options={options} onSelect={onNewDirection} />
+
           <ColorPicker
             onChange={(color) => setInitialColor(color)}
             color={initialColor}
           >
             From
           </ColorPicker>
-          <button onClick={switchColors}>
+
+          <button onClick={switchColors} className="hidden xs:inline-block">
             <SwitchHorizontalIcon className="h-6 w-6 text-neutral-50 transition-transform duration-300 active:rotate-180" />
           </button>
+
           <ColorPicker onChange={(color) => setToColor(color)} color={toColor}>
             To
           </ColorPicker>
