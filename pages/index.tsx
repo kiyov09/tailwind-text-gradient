@@ -120,7 +120,7 @@ const Home: NextPage = () => {
           TailwindCSS text gradient generator
         </h1>
 
-        <div className="place-self-start md:place-self-auto">
+        <div className="fixed bottom-[150px] right-0 left-0 mx-auto w-auto max-w-6xl px-6">
           <CopyBlock
             text={code}
             language="html"
@@ -130,7 +130,7 @@ const Home: NextPage = () => {
               paddingRight: '3.5rem',
               overflow: 'auto',
               textAlign: 'center',
-              marginBottom: '2rem',
+              borderRadius: '0.75rem',
             }}
           />
         </div>
