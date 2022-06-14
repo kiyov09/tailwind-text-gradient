@@ -112,10 +112,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen w-screen bg-neutral-900 p-6 pt-28 md:p-10 lg:px-24">
+      <main className="h-screen w-screen bg-neutral-900 p-6 pt-28 md:p-10 md:pt-44 lg:px-24 lg:pt-52">
         <h1
           ref={textRef}
-          className={`mx-auto w-auto max-w-7xl pb-2 ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-5xl font-extrabold leading-none text-transparent sm:text-6xl md:-translate-y-2/3 md:place-self-center md:text-8xl lg:text-[8rem]`}
+          className={`mx-auto w-auto max-w-7xl pb-2 ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-5xl font-extrabold leading-none text-transparent sm:text-6xl md:place-self-center md:text-8xl lg:text-[8rem]`}
         >
           TailwindCSS text gradient generator
         </h1>
