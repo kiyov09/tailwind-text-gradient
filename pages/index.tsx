@@ -9,7 +9,6 @@ import Listbox from '../components/generics/Listbox';
 import type { Option, ListboxOptions } from '../components/generics/Listbox';
 
 import ColorPicker from '../components/generics/ColorPicker';
-import { SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { RgbaColor } from 'react-colorful';
 
 import GithubLink from '../components/GithubLink';
