@@ -29,7 +29,7 @@ export default function ColorPicker({
 
   return (
     <Popover className="relative flex-1">
-      <Popover.Button className="flex h-10 w-full items-center justify-between gap-8 rounded-xl bg-neutral-800 px-4 py-2 text-base tracking-wider text-white outline-none ring-1 ring-neutral-700 hover:ring-2 hover:ring-neutral-600 hover:ring-offset-2 hover:ring-offset-neutral-900 focus:ring-2 focus:ring-neutral-600 focus:ring-offset-2 focus:ring-offset-neutral-900 md:w-auto">
+      <Popover.Button className="flex h-10 w-full items-center justify-between gap-8 rounded-xl bg-neutral-800 px-4 py-2 text-base tracking-wider text-white outline-none ring-1 ring-neutral-700 hover:ring-2 hover:ring-neutral-600 hover:ring-offset-2 hover:ring-offset-neutral-900 focus:ring-2 focus:ring-neutral-600 focus:ring-offset-2 focus:ring-offset-neutral-900 active:bg-neutral-700 md:w-auto">
         <span className="flex-1 text-left">{children}</span>
         <div
           className="h-full w-10 rounded-md"
