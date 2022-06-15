@@ -113,15 +113,15 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-screen w-screen bg-neutral-900 p-6 pt-28 md:p-10 md:pt-60 lg:px-24">
+      <main className="h-screen w-screen overflow-auto bg-neutral-900 p-6 md:p-10 lg:px-24">
         <h1
           ref={textRef}
-          className={`mx-auto w-auto max-w-7xl pb-2 ${direction} from-red-500 to-blue-500 bg-clip-text text-center text-5xl font-extrabold leading-none text-transparent sm:text-6xl md:place-self-center md:text-8xl lg:text-[8rem]`}
+          className={`mx-auto w-auto max-w-7xl pb-2 ${direction} mt-28 from-red-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold leading-none text-transparent xxs:text-5xl sm:text-6xl md:mt-60 md:place-self-center md:text-8xl lg:text-[8rem]`}
         >
           TailwindCSS text gradient generator
         </h1>
 
-        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 md:mt-44 md:w-3/4 md:max-w-6xl xxs:bottom-[150px]">
+        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-6xl">
           <CopyBlock
             text={code}
             language="html"
@@ -136,7 +136,7 @@ const Home: NextPage = () => {
           />
         </div>
 
-        <div className="fixed bottom-4 left-0 right-0 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl xxs:gap-5">
+        <div className="fixed bottom-4 left-0 right-0 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 xxs:gap-5 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl">
           <Listbox options={options} onSelect={onNewDirection} />
 
           <ColorPicker
