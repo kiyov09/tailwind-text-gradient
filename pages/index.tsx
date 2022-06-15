@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { rgbaToCSS } from '../utils/colors';
 import { CopyBlock, dracula } from 'react-code-blocks';
@@ -13,6 +13,7 @@ import { SwitchHorizontalIcon } from '@heroicons/react/outline';
 import { RgbaColor } from 'react-colorful';
 
 import GithubLink from '../components/GithubLink';
+import SwitchColorsToggle from '../components/SwitchColorsToggle';
 
 const options: ListboxOptions = [
   {
@@ -72,6 +73,7 @@ const Home: NextPage = () => {
     b: 246,
     a: 1,
   });
+  const [areColorSwitch, setAreColorSwitch] = useState(false);
 
   const code = `text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
     initialColor
@@ -84,11 +86,12 @@ const Home: NextPage = () => {
     setDirection(option.value);
   };
 
-  const switchColors = () => {
+  const switchColors = useCallback(() => {
     const temp = initialColor;
     setInitialColor(toColor);
     setToColor(temp);
-  };
+    setAreColorSwitch(!areColorSwitch);
+  }, [initialColor, toColor, areColorSwitch]);
 
   useEffect(() => {
     if (textRef.current) {
@@ -145,9 +148,7 @@ const Home: NextPage = () => {
             From
           </ColorPicker>
 
-          <button onClick={switchColors} className="hidden xs:inline-block">
-            <SwitchHorizontalIcon className="h-6 w-6 text-neutral-50 transition-transform duration-300 active:rotate-180" />
-          </button>
+          <SwitchColorsToggle onChange={switchColors} isOn={areColorSwitch} />
 
           <ColorPicker onChange={(color) => setToColor(color)} color={toColor}>
             To
