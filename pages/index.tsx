@@ -81,7 +81,6 @@ const Home: NextPage = () => {
   const textRef = useRef<HTMLHeadingElement>(null);
 
   const onNewDirection = (option: Option) => {
-    console.log(option);
     setDirection(option.value);
   };
 
