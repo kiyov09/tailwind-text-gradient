@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { rgbaToCSS } from '../utils/colors';
 import { CopyBlock, dracula } from 'react-code-blocks';
@@ -13,6 +13,8 @@ import { RgbaColor } from 'react-colorful';
 
 import GithubLink from '../components/GithubLink';
 import SwitchColorsToggle from '../components/SwitchColorsToggle';
+
+import MainText from '../components/MainText';
 
 const options: ListboxOptions = [
   {
@@ -78,8 +80,6 @@ const Home: NextPage = () => {
     initialColor
   )}] to-[${rgbaToCSS(toColor)}]`;
 
-  const textRef = useRef<HTMLHeadingElement>(null);
-
   const onNewDirection = (option: Option) => {
     setDirection(option.value);
   };
@@ -91,21 +91,6 @@ const Home: NextPage = () => {
     setAreColorSwitch(!areColorSwitch);
   }, [initialColor, toColor, areColorSwitch]);
 
-  useEffect(() => {
-    if (textRef.current) {
-      textRef.current.style.setProperty(
-        '--tw-gradient-from',
-        rgbaToCSS(initialColor)
-      );
-    }
-  }, [initialColor]);
-
-  useEffect(() => {
-    if (textRef.current) {
-      textRef.current.style.setProperty('--tw-gradient-to', rgbaToCSS(toColor));
-    }
-  }, [toColor]);
-
   return (
     <div className="h-screen w-screen">
       <Head>
@@ -114,12 +99,13 @@ const Home: NextPage = () => {
       </Head>
 
       <main className="h-screen w-screen overflow-auto bg-neutral-900 p-6 md:p-10 xl:px-24">
-        <h1
-          ref={textRef}
-          className={`mx-auto w-auto max-w-7xl pb-2 ${direction} mt-28 from-red-500 to-blue-500 bg-clip-text text-center text-4xl font-extrabold leading-none text-transparent xxs:text-5xl sm:text-7xl md:mt-60 md:place-self-center md:text-8xl xl:text-[7.5rem]`}
+        <MainText
+          direction={direction}
+          fromColor={initialColor}
+          toColor={toColor}
         >
           TailwindCSS text gradient generator
-        </h1>
+        </MainText>
 
         <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-6xl">
           <CopyBlock
