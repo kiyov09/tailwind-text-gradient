@@ -16,3 +16,22 @@ body,
 html {
   height: -webkit-fill-available;
 }
+
+/* Code block rules */
+
+.copy-block > div {
+  @apply rounded-xl bg-neutral-900 px-4 ring-2 ring-neutral-800 ring-offset-2 ring-offset-neutral-900;
+}
+
+.copy-block code {
+  @apply bg-neutral-900;
+}
+
+.copy-block > div > button {
+  @apply top-auto bottom-4 bg-neutral-900 ring-2 ring-neutral-800 ring-offset-1 ring-offset-neutral-900 focus:ring-neutral-800;
+}
+
+.copy-block > div > button:hover,
+.copy-block > div > button:focus {
+  @apply ring-neutral-700;
+}

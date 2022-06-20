@@ -3,7 +3,17 @@ import Head from 'next/head';
 import { useCallback, useState } from 'react';
 
 import { rgbaToCSS } from '../utils/colors';
-import { CopyBlock, dracula } from 'react-code-blocks';
+import {
+  codepen,
+  CopyBlock,
+  dracula,
+  hybrid,
+  irBlack,
+  monokai,
+  nord,
+  obsidian,
+  ocean,
+} from 'react-code-blocks';
 
 import Listbox from '../components/generics/Listbox';
 import type { Option, ListboxOptions } from '../components/generics/Listbox';
@@ -59,6 +69,8 @@ const options: ListboxOptions = [
   },
 ];
 
+const mainText = 'TailwindCSS Text Gradient Generator';
+
 const Home: NextPage = () => {
   const [direction, setDirection] = useState('bg-gradient-to-r');
 
@@ -76,9 +88,15 @@ const Home: NextPage = () => {
   });
   const [areColorSwitch, setAreColorSwitch] = useState(false);
 
-  const code = `text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
+  // const code = `text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
+  //   initialColor
+  // )}] to-[${rgbaToCSS(toColor)}]`;
+
+  const code = `<h1 class="text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
     initialColor
-  )}] to-[${rgbaToCSS(toColor)}]`;
+  )}] to-[${rgbaToCSS(toColor)}]">
+  ${mainText}
+</h1>`;
 
   const onNewDirection = (option: Option) => {
     setDirection(option.value);
@@ -104,23 +122,8 @@ const Home: NextPage = () => {
           fromColor={initialColor}
           toColor={toColor}
         >
-          TailwindCSS text gradient generator
+          {mainText}
         </MainText>
-
-        <div className="fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-6xl">
-          <CopyBlock
-            text={code}
-            language="html"
-            theme={dracula}
-            customStyle={{
-              padding: '1.5rem',
-              paddingRight: '3.5rem',
-              overflow: 'auto',
-              textAlign: 'center',
-              borderRadius: '0.75rem',
-            }}
-          />
-        </div>
 
         <div className="fixed bottom-4 left-0 right-0 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 xxs:gap-5 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl">
           <Listbox options={options} onSelect={onNewDirection} />
@@ -140,6 +143,16 @@ const Home: NextPage = () => {
         </div>
 
         <GithubLink />
+
+        <div className="copy-block fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-6xl">
+          <CopyBlock
+            text={code}
+            language="html"
+            theme={ocean}
+            codeBlock={true}
+            showLineNumbers={false}
+          />
+        </div>
       </main>
     </div>
   );
