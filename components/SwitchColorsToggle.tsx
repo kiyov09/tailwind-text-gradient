@@ -14,7 +14,7 @@ export default function SwitchColorsToggle({
     <Switch
       checked={isOn}
       onChange={onChange}
-      className="hidden xs:inline-block"
+      className="-mx-1 hidden rounded-md p-1 outline-none hover:ring-2 hover:ring-neutral-600 hover:ring-offset-2 hover:ring-offset-neutral-900 focus:ring-2 focus:ring-neutral-600 focus:ring-offset-2 focus:ring-offset-neutral-900 xs:inline-block"
     >
       <SwitchHorizontalIcon
         className={`h-6 w-6 text-neutral-50 transition-transform duration-300 ${
