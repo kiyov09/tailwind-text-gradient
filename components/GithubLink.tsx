@@ -4,7 +4,7 @@ export default function GithubLink() {
       href="https://github.com/kiyov09/tailwind-text-gradient"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed -top-16 -right-16 flex h-32 w-32 rotate-45 items-center justify-center bg-neutral-800 text-white"
+      className="fixed -top-16 -right-16 flex h-32 w-32 rotate-45 items-center justify-center bg-neutral-800 text-white outline-none hover:ring-2 hover:ring-neutral-600 hover:ring-offset-0 hover:ring-offset-neutral-900 focus:ring-2 focus:ring-neutral-600 focus:ring-offset-0 focus:ring-offset-neutral-900"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
