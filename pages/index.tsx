@@ -3,17 +3,7 @@ import Head from 'next/head';
 import { useCallback, useState } from 'react';
 
 import { rgbaToCSS } from '../utils/colors';
-import {
-  codepen,
-  CopyBlock,
-  dracula,
-  hybrid,
-  irBlack,
-  monokai,
-  nord,
-  obsidian,
-  ocean,
-} from 'react-code-blocks';
+import { CopyBlock, ocean } from 'react-code-blocks';
 
 import Listbox from '../components/generics/Listbox';
 import type { Option, ListboxOptions } from '../components/generics/Listbox';
@@ -144,7 +134,7 @@ const Home: NextPage = () => {
 
         <GithubLink />
 
-        <div className="copy-block fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-6xl">
+        <div className="copy-block fixed bottom-[170px] right-0 left-0 mx-auto w-auto max-w-xl px-6 xxs:bottom-[150px] md:static md:mt-44 md:w-3/4 md:max-w-fit">
           <CopyBlock
             text={code}
             language="html"
