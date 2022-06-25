@@ -115,7 +115,7 @@ const Home: NextPage = () => {
           {mainText}
         </MainText>
 
-        <div className="fixed bottom-4 left-0 right-0 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 xxs:gap-5 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl">
+        <div className="fixed bottom-4 left-0 right-0 z-10 mx-auto flex w-auto max-w-xl flex-wrap items-center justify-between gap-2 bg-transparent px-6 py-3 xxs:gap-5 md:top-8 md:bottom-auto md:left-1/2 md:right-auto md:-translate-x-1/2 md:flex-nowrap md:justify-center md:gap-6 md:rounded-2xl">
           <Listbox options={options} onSelect={onNewDirection} />
 
           <ColorPicker
