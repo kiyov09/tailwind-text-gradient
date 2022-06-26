@@ -78,10 +78,6 @@ const Home: NextPage = () => {
   });
   const [areColorSwitch, setAreColorSwitch] = useState(false);
 
-  // const code = `text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
-  //   initialColor
-  // )}] to-[${rgbaToCSS(toColor)}]`;
-
   const code = `<h1 class="text-transparent bg-clip-text ${direction} from-[${rgbaToCSS(
     initialColor
   )}] to-[${rgbaToCSS(toColor)}]">
