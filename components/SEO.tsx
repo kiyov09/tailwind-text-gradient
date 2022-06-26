@@ -31,7 +31,7 @@ export default function SEO() {
         },
         {
           rel: 'icon',
-          href: '/favicon/favicon.ico',
+          href: '/favicon.ico',
         },
         {
           rel: 'icon',
