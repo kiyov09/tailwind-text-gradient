@@ -7,7 +7,7 @@ export default function SEO() {
       description="A simple text gradient generator for TailwindCSS"
       openGraph={{
         title: 'TailwindCSS Text Gradient Generator',
-        description: 'A simple text gradient generator for TailwindCSS',
+        description: 'A simple text gradient generator tool for TailwindCSS.',
         url: '',
         type: 'website',
         images: [
