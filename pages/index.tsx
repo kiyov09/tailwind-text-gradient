@@ -15,6 +15,7 @@ import GithubLink from '../components/GithubLink';
 import SwitchColorsToggle from '../components/SwitchColorsToggle';
 
 import MainText from '../components/MainText';
+import SEO from '../components/SEO';
 
 const options: ListboxOptions = [
   {
@@ -97,10 +98,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="h-screen w-screen">
-      <Head>
-        <title>Tailwindcss Text Gradient Generator</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <SEO />
 
       <main className="h-screen w-screen overflow-auto bg-neutral-900 p-6 md:p-10 xl:px-24">
         <MainText
